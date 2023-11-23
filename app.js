@@ -1,12 +1,13 @@
 import express from "express";
 import bodyParser from "body-parser";
 import { dirname } from "path";
+import path from "path";
 import { fileURLToPath } from "url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
 import client from "@mailchimp/mailchimp_marketing";
 import API from "./API.js";
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 client.setConfig({
