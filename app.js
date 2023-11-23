@@ -1,14 +1,16 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const request = require("request");
+import express from "express";
+import bodyParser from "body-parser";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
-const client = require("@mailchimp/mailchimp_marketing");
-const { log } = require("console");
+import client from "@mailchimp/mailchimp_marketing";
+import API from "./API.js";
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 client.setConfig({
-  apiKey: "5bed142c096559a9288d933551ea9b60-us9",
+  apiKey: API,
   server: "us9",
 });
 const listId = "c92033f280";
